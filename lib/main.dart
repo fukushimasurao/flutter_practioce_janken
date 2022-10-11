@@ -35,8 +35,8 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(myHand, style: TextStyle(fontSize: 32)),
-            SizedBox(height: 32),
+            Text(myHand, style: const TextStyle(fontSize: 32)),
+            const SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -44,6 +44,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '✊!!';
                     print('✊');
+                    setState(() {});
                   },
                   child: const Text('✊'),
                 ),
@@ -51,6 +52,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '✌️!!';
                     print('✌️');
+                    setState(() {});
                   },
                   child: const Text('✌️'),
                 ),
@@ -58,6 +60,7 @@ class _JankenPageState extends State<JankenPage> {
                   onPressed: () {
                     myHand = '✋!!';
                     print('✋');
+                    setState(() {});
                   },
                   child: const Text('✋'),
                 ),
