@@ -18,9 +18,14 @@ samples, guidance on mobile development, and a full API reference.
 ## 以下メモ
 
 ### statefullウィジェット
+
 →statefullは変数が使えるようになるらしい。
 変数とか利用する場合はhot restartの方が良さそう。
 
 画面を更新 = setstate()
 
 基本的な関数やif分などはJavaScriptと一緒なので、問題ない。
+
+### 問題点
+
+変数を初期化したいがうまくいかない。
