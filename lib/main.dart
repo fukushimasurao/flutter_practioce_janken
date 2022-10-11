@@ -28,14 +28,32 @@ class _JankenPageState extends State<JankenPage> {
   String myHand = '✊';
   String computerHand = '✊';
   String result = '勝負！';
-  int intCount = 0;
-  String strCount = '0';
+
+  int intVsCount = 0;
+  String strVsCount = '0';
+
+  int intWinCount = 0;
+  String strWinCount = '0';
+
+  int intLoseCount = 0;
+  String strLoseCount = '0';
+
+  int intDrawCount = 0;
+  String strDrawCount = '0';
 
   void selectHands(String selectedHand) {
     myHand = selectedHand;
     generatedComputerHand();
     getResult();
-    countUp();
+    vsCountUp();
+    setState(() {});
+  }
+
+  void reset() {
+    strVsCount = '0';
+    strWinCount = '0';
+    strLoseCount = '0';
+    strDrawCount = '0';
     setState(() {});
   }
 
@@ -46,19 +64,37 @@ class _JankenPageState extends State<JankenPage> {
 
   void getResult() {
     if (myHand == computerHand) {
+      drawCountUp();
       result = '引き分け';
     } else if (myHand == '✊' && computerHand == '✌️' ||
         myHand == '✌️' && computerHand == '✋' ||
         myHand == '✋' && computerHand == '✊') {
+      winCountUp();
       result = 'あなたの勝ち';
     } else {
+      loseCountUp();
       result = 'あなたの負け';
     }
   }
 
-  void countUp() {
-    intCount++;
-    strCount = intCount.toString();
+  void vsCountUp() {
+    intVsCount++;
+    strVsCount = intVsCount.toString();
+  }
+
+  void winCountUp() {
+    intWinCount++;
+    strWinCount = intWinCount.toString();
+  }
+
+  void loseCountUp() {
+    intLoseCount++;
+    strLoseCount = intLoseCount.toString();
+  }
+
+  void drawCountUp() {
+    intDrawCount++;
+    strDrawCount = intDrawCount.toString();
   }
 
   String randomNumberToHand(int randomNumber) {
@@ -84,9 +120,22 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("対戦回数 : $strCount", style: const TextStyle(fontSize: 32)),
+            Text("対戦回数 : $strVsCount", style: const TextStyle(fontSize: 32)),
             const SizedBox(
-              height: 64,
+              height: 12,
+            ),
+            Text("勝利回数 : $strWinCount", style: const TextStyle(fontSize: 32)),
+            const SizedBox(
+              height: 12,
+            ),
+            Text("負け回数 : $strLoseCount", style: const TextStyle(fontSize: 32)),
+            const SizedBox(
+              height: 12,
+            ),
+            Text("引き分け回数 : $strDrawCount",
+                style: const TextStyle(fontSize: 32)),
+            const SizedBox(
+              height: 32,
             ),
             Text(result, style: const TextStyle(fontSize: 32)),
             const SizedBox(
@@ -120,6 +169,12 @@ class _JankenPageState extends State<JankenPage> {
                   child: const Text('✋'),
                 ),
               ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                reset();
+              },
+              child: const Text('リセット'),
             ),
           ],
         ),
