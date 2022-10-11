@@ -19,3 +19,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ### statefullウィジェット
 →statefullは変数が使えるようになるらしい。
+変数とか利用する場合はhot restartの方が良さそう。
