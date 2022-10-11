@@ -27,12 +27,15 @@ class JankenPage extends StatefulWidget {
 class _JankenPageState extends State<JankenPage> {
   String myHand = '✊';
   String computerHand = '✊';
-  String result = '引き分け';
+  String result = '勝負！';
+  int intCount = 0;
+  String strCount = '0';
 
   void selectHands(String selectedHand) {
     myHand = selectedHand;
     generatedComputerHand();
     getResult();
+    countUp();
     setState(() {});
   }
 
@@ -51,6 +54,11 @@ class _JankenPageState extends State<JankenPage> {
     } else {
       result = 'あなたの負け';
     }
+  }
+
+  void countUp() {
+    intCount++;
+    strCount = intCount.toString();
   }
 
   String randomNumberToHand(int randomNumber) {
@@ -76,6 +84,10 @@ class _JankenPageState extends State<JankenPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("対戦回数 : $strCount", style: const TextStyle(fontSize: 32)),
+            const SizedBox(
+              height: 64,
+            ),
             Text(result, style: const TextStyle(fontSize: 32)),
             const SizedBox(
               height: 64,
