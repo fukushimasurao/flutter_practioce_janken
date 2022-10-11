@@ -23,6 +23,9 @@ class JankenPage extends StatefulWidget {
 }
 
 class _JankenPageState extends State<JankenPage> {
+
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
